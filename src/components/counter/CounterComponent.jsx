@@ -4,20 +4,20 @@ import './CounterComponent.css';
 
 class CounterComponent extends Component {
 
-  constructor() {
-    super();
-    // this.state = {
-    //   counter : 0
-    // }
+  // constructor() {
+  //   super();
+  //   // this.state = {
+  //   //   counter : 0
+  //   // }
 
-    // this.increment = this.increment.bind(this);
-    // this.decrement = this.decrement.bind(this);
-  }
+  //   // this.increment = this.increment.bind(this);
+  //   // this.decrement = this.decrement.bind(this);
+  // }
   render() {
     return (
       <div className="counterComponent">
-        <button onClick={() => this.props.incrementMethod(this.props.incrementBy)}>+{this.props.incrementBy}</button>
-        <button onClick={() => this.props.decrementMethod(this.props.incrementBy)}>-{this.props.incrementBy}</button>
+        <button className="buttonClass" onClick={() => this.props.incrementMethod(this.props.incrementBy)}>+{this.props.incrementBy}</button>
+        <button className="buttonClass" onClick={() => this.props.decrementMethod(this.props.incrementBy)}>-{this.props.incrementBy}</button>
         {/* <span className = "count">{this.state.counter}</span> */}
       </div>
     )

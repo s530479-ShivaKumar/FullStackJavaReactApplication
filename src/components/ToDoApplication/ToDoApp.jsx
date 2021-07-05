@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import AuthenticationService from './AuthenticationService.js';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+// import AuthenticationService from './AuthenticationService.js';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import LoginComponent from './LoginComponent'
 import ListTodosComponent from './ListTodosComponent.jsx';
@@ -244,18 +244,18 @@ class ToDoApp extends Component {
 //     return <div>Page not found dude!!!!</div>
 // }
 
-function ShowInvalidCreds(props) {
-    if(props.hasLoginFailed)
-        return <div style={{color : "red"}}>Unsuccesful Login</div>
+// function ShowInvalidCreds(props) {
+//     if(props.hasLoginFailed)
+//         return <div style={{color : "red"}}>Unsuccesful Login</div>
     
-    return null;
-}
+//     return null;
+// }
 
-function LoginSuccessful(props) {
-    if(props.showSuccessMessage)
-        return <div style={{color : "green"}}> Login successful</div>
+// function LoginSuccessful(props) {
+//     if(props.showSuccessMessage)
+//         return <div style={{color : "green"}}> Login successful</div>
     
-    return null;
-}
+//     return null;
+// }
 
 export default ToDoApp;

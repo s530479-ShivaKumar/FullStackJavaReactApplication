@@ -1,18 +1,33 @@
 import React, {Component} from 'react'
+import TodoDataService from '../../api/todos/TodoDataService';
+import AuthenticationService from './AuthenticationService';
 
 class ListTodosComponent extends Component {
 
     constructor(props) {
         super(props);
-        this. state = {
+        this.state = {
             todos : 
             [
-                {id :1 , description : "Learn 11", Done :  false, LastDate : new Date()},
-                {id :2 , description : "Learn 22", Done :  false, LastDate : new Date()},
-                {id :3 , description : "Learn 33", Done :  false, LastDate : new Date()},
+                // {id :1 , description : "Learn 11", Done :  false, LastDate : new Date()},
+                // {id :2 , description : "Learn 22", Done :  false, LastDate : new Date()},
+                // {id :3 , description : "Learn 33", Done :  false, LastDate : new Date()},
             ]
         }
     }
+
+    componentDidMount() {
+        const user = AuthenticationService.getUserName();
+        TodoDataService.retrieveAllTodos(user)
+        .then(
+            response => {
+                // console.log(response);
+                this.setState({todos : response.data})
+            }
+        );
+
+    }
+
     render () {
         return (
             <div>
@@ -34,8 +49,8 @@ class ListTodosComponent extends Component {
                                     <tr>
                                         <td> {todo.id}</td>
                                         <td> {todo.description}</td>
-                                        <td> {todo.Done.toString()}</td>
-                                        <td> {todo.LastDate.toString()}</td>
+                                        <td> {todo.done.toString()}</td>
+                                        <td> {todo.completionDate.toString()}</td>
                                     </tr>
                                 )
                             }

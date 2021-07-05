@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Counter from './components/counter/Counter';
+// import logo from './logo.svg';
+// import Counter from './components/counter/Counter';
 import ToDoApp from './components/ToDoApplication/ToDoApp';
 import './App.css';
 import './bootstrap.css'
