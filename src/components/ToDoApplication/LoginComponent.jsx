@@ -35,25 +35,51 @@ class LoginComponent extends Component {
     }
 
     login() {
-        if(this.state.userName === 'shiva' && this.state.password === 'shiva'){
-            // this.setState(
-            //     {
-            //         showSuccessMessage : true,
-            //         hasLoginFailed : false,
-            //     }
-            //     ) 
-            AuthenticationService.registerSuccesfulLogin(this.state.userName, this.state.password)
+        // if(this.state.userName === 'shiva' && this.state.password === 'shiva'){
+        //     // this.setState(
+        //     //     {
+        //     //         showSuccessMessage : true,
+        //     //         hasLoginFailed : false,
+        //     //     }
+        //     //     ) 
+        //     AuthenticationService.registerSuccesfulLogin(this.state.userName, this.state.password)
+        //     this.props.history.push(`/welcome/${this.state.userName}`)
+        //     }
+        //     else{
+        //         this.setState(
+        //             {
+        //                 showSuccessMessage : false,
+        //                 hasLoginFailed : true,
+        //             }
+        //         )
+        //         // this.props.history.push("/error")
+        //     }
+
+        // AuthenticationService.executeBAsicAuthenticationService(this.state.userName, this.state.password)
+        // .then(() => {
+        //     AuthenticationService.registerSuccesfulLogin(this.state.userName, this.state.password)
+        //     this.props.history.push(`/welcome/${this.state.userName}`)
+        // }).catch( () => {
+        //     this.setState(
+        //         {
+        //             showSuccessMessage : false,
+        //             hasLoginFailed : true,
+        //         }
+        //     )
+        // })
+
+        AuthenticationService.executeJWTAuthenticationService(this.state.userName, this.state.password)
+        .then((response) => {
+            AuthenticationService.registerSuccesfulLoginForJWT(this.state.userName, response.data.token)
             this.props.history.push(`/welcome/${this.state.userName}`)
-            }
-            else{
-                this.setState(
-                    {
-                        showSuccessMessage : false,
-                        hasLoginFailed : true,
-                    }
-                )
-                // this.props.history.push("/error")
-            }
+        }).catch( () => {
+            this.setState(
+                {
+                    showSuccessMessage : false,
+                    hasLoginFailed : true,
+                }
+            )
+        })
     }
 
 

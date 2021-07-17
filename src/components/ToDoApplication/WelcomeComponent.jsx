@@ -17,15 +17,15 @@ class WelcomeComponent extends Component {
 
     render() {
         return (
-            <>
-                <h1>Welcome!!</h1>
-                <div className="container"><h3> Hi {this.props.match.params.name}.</h3></div>
-                <div> You can manage your stuff by clicking <Link to="/todos"> here</Link></div>
-                <div className="container">
+            <div>
+                <h2>Welcome!!</h2>
+                <div className="container"><h3> Hey {this.props.match.params.name}.</h3></div>
+                <div> You can manage your Todo things by clicking <Link to="/todos"> here</Link></div>
+                {/* <div className="container">
                     <button className="btn btn-success" onClick={this.retrieveCustomeMessage}>A button</button>
                 </div>
-                <div> {this.state.welcomeMessage}</div>
-            </>
+                <div> {this.state.welcomeMessage}</div> */}
+            </div>
         )
     }
 
@@ -47,7 +47,14 @@ class WelcomeComponent extends Component {
     }
 
     handleErrorMessage(error) {
-        this.setState({welcomeMessage : error.response.data.message})
+        let errorMessage ='';
+
+        if(error.message)
+            errorMessage+= error.message
+
+        if(error.response && error.response.data)
+            errorMessage+= error.response.data.message
+        this.setState({welcomeMessage : errorMessage})
     }
 }
 
